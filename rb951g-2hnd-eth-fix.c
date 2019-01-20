@@ -12,11 +12,11 @@ MODULE_VERSION("0.0.1");
 void writeregl(void* map_base, unsigned long addr, unsigned long value) {
   int res;
   res = readl(map_base + addr);
-  printk("%s - 0x%lx value before write: 0x%08x\n", THIS_MODULE->name, addr, res);
+  printk(KERN_INFO "%s: 0x%lx value before write: 0x%08x\n", THIS_MODULE->name, addr, res);
   writel(value, map_base + addr);
-  printk("%s - Wrote 0x%08lx to address 0x%lx\n", THIS_MODULE->name, value, addr);
+  printk(KERN_INFO "%s: Wrote 0x%08lx to address 0x%lx\n", THIS_MODULE->name, value, addr);
   res = readl(map_base + addr);
-  printk("%s - 0x%lx value after write: 0x%08x\n", THIS_MODULE->name, addr, res);
+  printk(KERN_INFO "%s: 0x%lx value after write: 0x%08x\n", THIS_MODULE->name, addr, res);
 }
 
 int init_module(void) {
@@ -24,19 +24,19 @@ int init_module(void) {
 
   // Create memory map
   map_base = ioremap(0, MAP_SIZE);
-  printk("%s - Memory mapped at address 0x%p.\n", THIS_MODULE->name, map_base);
+  printk(KERN_INFO "%s: Memory mapped at address 0x%p.\n", THIS_MODULE->name, map_base);
 
   // Write 0x00004041 to address 0x18070000
-  printk("%s - Set (AR934X_ETH_CFG_RGMII_GMAC0|AR934X_ETH_CFG_RXD_DELAY|AR934X_ETH_CFG_SW_ONLY_MODE) to AR9344 ETH_XMII_CONTROL register\n", THIS_MODULE->name);
+  printk(KERN_INFO "%s: Set (AR934X_ETH_CFG_RGMII_GMAC0|AR934X_ETH_CFG_RXD_DELAY|AR934X_ETH_CFG_SW_ONLY_MODE) to AR9344 ETH_XMII_CONTROL register\n", THIS_MODULE->name);
   writeregl(map_base, 0x18070000, 0x00004041);
 
   // Write 0x6f000000 to address 0x1805002c
-  printk("%s - Set 0x6f000000 to AR9344 ETH_XMII_CONTROL register\n", THIS_MODULE->name);
+  printk(KERN_INFO "%s: Set 0x6f000000 to AR9344 ETH_XMII_CONTROL register\n", THIS_MODULE->name);
   writeregl(map_base, 0x1805002c, 0x6f000000);
 
   // Clean memory map
   iounmap(map_base);
-  printk("%s - The switch chip should be working now!\n", THIS_MODULE->name);
+  printk(KERN_INFO "%s: The switch chip should be working now!\n", THIS_MODULE->name);
   return 0;
 }
 
