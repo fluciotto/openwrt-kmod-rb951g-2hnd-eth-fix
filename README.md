@@ -19,7 +19,7 @@ This module is intended to properly configure the CPU GMAC0 to fix the communica
 
 ## Installation
 
-1. Copy rb951g-2hnd-eth-fix.ko to your router through serial port
+1. Copy rb951g-2hnd-eth-fix.ko to your router through serial port (see https://github.com/fluciotto/serial-transfer)
 2. Copy rb951g-2hnd-eth-fix.ko to /lib/modules/<kernel version>
 3. ```modprobe rb951g_2hnd_fix_eth```
 
