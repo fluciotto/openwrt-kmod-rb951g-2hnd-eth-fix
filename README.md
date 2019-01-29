@@ -4,11 +4,11 @@
 
 The link between AR9344 CPU and AR8327 gigabit ethernet switch (GMAC0) is not working by default under OpenWRT.
 
-It is needed to write some registers to activate communication between the CPU and the gigabit ethernet switch.
+It is needed to write some registers to activate proper communication between the CPU and the gigabit ethernet switch.
 
 This module is intended to properly configure the CPU GMAC0 to fix the communication with the gigabit ethernet switch.
 
-*Note: This module has been tested with OpenWRT 18.03.1.*
+*Note: This module has been tested with OpenWRT 18.06.1.*
 
 ## Compilation
 
