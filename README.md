@@ -8,7 +8,7 @@ It is needed to write some registers to activate proper communication between th
 
 This module is intended to properly configure the CPU GMAC0 to fix the communication with the gigabit ethernet switch.
 
-*Note: This module has been tested with OpenWRT 18.06.1.*
+*Note: This module has been tested with OpenWRT 18.06 and 19.07 (linux kernel 4.14)
 
 ## Compilation
 
@@ -20,7 +20,7 @@ This module is intended to properly configure the CPU GMAC0 to fix the communica
 ## Installation
 
 1. Copy rb951g-2hnd-eth-fix.ko to your router through serial port (see https://github.com/fluciotto/serial-transfer)
-2. Copy rb951g-2hnd-eth-fix.ko to /lib/modules/<kernel version>
+2. Copy rb951g-2hnd-eth-fix.ko to /lib/modules/&lt;kernel version&gt;
 3. ```modprobe rb951g_2hnd_fix_eth```
 
 ## Load module on boot
